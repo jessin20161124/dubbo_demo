@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: dubboDemo-spring-boot
+  mvc:
+    servlet:
+      path: /practice
+      loadOnStartup: 1
+    throw-exception-if-no-handler-found: true
+server:
+  port: 9999
+  error:
+    whitelabel:
+      enabled: false
+dubbo:
+  scan:
+    #配置dubbo provider扫描的包
+    #provider最终注入的是ServiceAnnotationBeanPostProcessor，
+    #对应的dubbo provider实现类必须有@Service注解，注意是dubbo的@Service
+    #dubbo consumer使用注解：ReferenceAnnotationBeanPostProcessor
+    base-packages: com.jessin.practice.demo.dubbo_demo.service
+  registry:
+    address: 1.15.130.58:2181
