@@ -1,5 +1,11 @@
 package com.jessin.practice.demo.dubbo_demo;
 
+import static org.apache.dubbo.common.constants.CommonConstants.REMOTE_METADATA_STORAGE_TYPE;
+import static org.apache.dubbo.common.constants.RegistryConstants.REGISTRY_TYPE_KEY;
+import static org.apache.dubbo.common.constants.RegistryConstants.SERVICE_REGISTRY_TYPE;
+
+import com.google.common.collect.Maps;
+import java.util.Map;
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ProtocolConfig;
 import org.apache.dubbo.config.RegistryConfig;
@@ -24,7 +30,7 @@ public class DubboContext {
      * @return
      */
     @Bean
-    public RegistryConfig jessinRegistry(@Value("${dubbo.registry.address}") String address,
+    public RegistryConfig jessinRegistry(@Value("1.15.130.58:2181") String address,
             @Value("demo_group") String group) {
         return getRegistryConfig(address, group);
     }
@@ -45,7 +51,12 @@ public class DubboContext {
     @Bean
     public ApplicationConfig applicationConfig() {
         ApplicationConfig applicationConfig = new ApplicationConfig();
+        // 对于应用级别的服务发现，依赖这个name进行服务发现
         applicationConfig.setName(applicationName);
+        applicationConfig.setMetadataType(REMOTE_METADATA_STORAGE_TYPE);
+        Map<String, String> paramMap = Maps.newHashMap();
+        paramMap.put(REGISTRY_TYPE_KEY, SERVICE_REGISTRY_TYPE);
+        applicationConfig.setParameters(paramMap);
         return applicationConfig;
     }
 
