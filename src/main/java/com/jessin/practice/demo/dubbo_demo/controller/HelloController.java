@@ -17,7 +17,6 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.apache.dubbo.config.annotation.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Profile;
@@ -39,7 +38,7 @@ public class HelloController {
     @DubboReference(version = "1.0.0", timeout = 3000, registry = "jessinRegistry", application = "applicationConfig")
     private UserService userService;
 
-    @Reference(version = "1.0.0", group = "service_group", timeout = 3000, registry = "jessinRegistry", application = "applicationConfig")
+    @DubboReference(version = "1.0.0", group = "service_group", timeout = 3000, registry = "jessinRegistry", application = "applicationConfig")
     private DomainService domainService;
 
     /**
@@ -268,4 +267,6 @@ public class HelloController {
     public DomainInfo domain(UserParam userParam) {
         return domainService.queryAssociatedDomain(userParam);
     }
+
+
 }

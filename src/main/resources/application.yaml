@@ -18,3 +18,12 @@ dubbo:
     #对应的dubbo provider实现类必须有@Service注解，注意是dubbo的@Service
     #dubbo consumer使用注解：ReferenceAnnotationBeanPostProcessor
     base-packages: com.jessin.practice.demo.dubbo_demo.service
+logging:
+  #file和path属性用一个就行，同时出现的情况下优先使用file
+  #path: "/home/jessin/logs"
+  file.max-history: 10
+  file.max-size: 1GB
+  pattern:
+    #日志格式，分别是文件的日志格式和控制台的日志格式
+    file: "%d{ISO8601} [%-5level] [%thread] |%L|%-40.40logger{0}---%msg%n"
+    console: "%d{ISO8601} [%-5level] [%thread] |%L|%-40.40logger{0}---%msg%n"

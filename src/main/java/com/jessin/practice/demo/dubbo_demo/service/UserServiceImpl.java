@@ -17,7 +17,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-import org.apache.dubbo.config.annotation.Service;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Profile;
@@ -27,7 +27,7 @@ import org.springframework.context.annotation.Profile;
  * @Date: 19-11-27 下午11:33
  */
 @Profile("provider")
-@Service(registry = "jessinRegistry", version = "1.0.0", timeout = 1000, application = "applicationConfig")
+@DubboService(registry = "jessinRegistry", version = "1.0.0", timeout = 1000, application = "applicationConfig")
 public class UserServiceImpl implements UserService {
     private Logger log = LoggerFactory.getLogger(getClass());
 
@@ -314,5 +314,25 @@ public class UserServiceImpl implements UserService {
             result.setCode(1);
             return result;
         }, executor);
+    }
+
+    @Override
+    public int getPrimitiveInt(int i) {
+        return 0;
+    }
+
+    @Override
+    public Integer getPrimitiveInteger(int i) {
+        return null;
+    }
+
+    @Override
+    public BizType getEnum(int i) {
+        return null;
+    }
+
+    @Override
+    public List<User> getList(int i) {
+        return null;
     }
 }

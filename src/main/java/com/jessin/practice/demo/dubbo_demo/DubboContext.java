@@ -55,6 +55,7 @@ public class DubboContext {
         applicationConfig.setName(applicationName);
         applicationConfig.setMetadataType(REMOTE_METADATA_STORAGE_TYPE);
         Map<String, String> paramMap = Maps.newHashMap();
+        // 3.0不需要设置
         paramMap.put(REGISTRY_TYPE_KEY, SERVICE_REGISTRY_TYPE);
         applicationConfig.setParameters(paramMap);
         return applicationConfig;
