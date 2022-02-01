@@ -19,6 +19,7 @@ public class SpringClientFactoryTest {
         ILoadBalancer iLoadBalancer = springClientFactory.getLoadBalancer("name");
         return "iLoadBalancer";
     }
+
     public String destroy() {
         springClientFactory.destroy();
         return "success";

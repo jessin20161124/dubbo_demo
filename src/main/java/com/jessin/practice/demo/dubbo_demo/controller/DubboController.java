@@ -2,6 +2,7 @@ package com.jessin.practice.demo.dubbo_demo.controller;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.jessin.practice.demo.dubbo_demo.Constants;
 import com.jessin.practice.dubbo.model.AppInfo;
 import com.jessin.practice.dubbo.model.BizType;
 import com.jessin.practice.dubbo.model.DomainInfo;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
+import javax.annotation.Resource;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,22 +31,23 @@ import org.springframework.web.bind.annotation.RestController;
  * @Author: jessin
  * @Date: 19-8-3 下午4:25
  */
-@Profile("consumer")
+@Profile(Constants.CONSUMER)
 @RestController
-public class HelloController {
+public class DubboController {
 
     private Logger log = LoggerFactory.getLogger(getClass());
 
-    @DubboReference(version = "1.0.0", timeout = 3000, registry = "jessinRegistry", application = "applicationConfig")
+//    @DubboReference(version = "1.0.0", timeout = 3000, registry = "jessinRegistry", application = "applicationConfig")
+    @Resource
     private UserService userService;
 
     @DubboReference(version = "1.0.0", group = "service_group", timeout = 3000, registry = "jessinRegistry", application = "applicationConfig")
     private DomainService domainService;
 
     /**
-     * http://localhost:9999/practice/hello?type=7
+     * http://localhost:9999/practice/user?type=7
      */
-    @RequestMapping("/hello")
+    @RequestMapping("/user")
     public Object hello(UserParam userParam, @RequestParam int type) {
         log.info("test miniDubbo param");
         if (type == 0) {
@@ -267,6 +270,4 @@ public class HelloController {
     public DomainInfo domain(UserParam userParam) {
         return domainService.queryAssociatedDomain(userParam);
     }
-
-
 }

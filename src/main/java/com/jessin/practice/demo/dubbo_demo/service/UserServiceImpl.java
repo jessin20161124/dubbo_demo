@@ -2,6 +2,7 @@ package com.jessin.practice.demo.dubbo_demo.service;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.jessin.practice.demo.dubbo_demo.Constants;
 import com.jessin.practice.dubbo.model.AppInfo;
 import com.jessin.practice.dubbo.model.BizType;
 import com.jessin.practice.dubbo.model.Result;
@@ -26,7 +27,7 @@ import org.springframework.context.annotation.Profile;
  * @Author: jessin
  * @Date: 19-11-27 下午11:33
  */
-@Profile("provider")
+@Profile(Constants.PROVIDER)
 @DubboService(registry = "jessinRegistry", version = "1.0.0", timeout = 1000, application = "applicationConfig")
 public class UserServiceImpl implements UserService {
     private Logger log = LoggerFactory.getLogger(getClass());

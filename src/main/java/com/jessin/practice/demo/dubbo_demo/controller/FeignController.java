@@ -23,7 +23,7 @@ public class FeignController {
      * http://localhost:9999/practice/testFeign
      */
     @RequestMapping("/testFeign")
-    public String domain(UserParam userParam) {
+    public String testFeign(UserParam userParam) {
         return myFeignClient.getName();
     }
 

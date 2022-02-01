@@ -1,4 +1,8 @@
-### dubbo spring boot demo
+## <center> dubbo 3.0 spring boot demo </center>
+
+#### 部署api到本地仓库
+&nbsp;&nbsp;&nbsp;&nbsp;部署api到本地仓库：[https://github.com/jessin20161124/api](https://github.com/jessin20161124/api)
+
 #### 启动provider
 ```
   java -Dspring.profiles.active=provider -Dserver.port=8081 -jar target/dubbo_demo-0.0.1-SNAPSHOT.jar
@@ -6,7 +10,6 @@
 #### 启动consumer
 ```
  java -Dspring.profiles.active=consumer -Dserver.port=8082 -jar target/dubbo_demo-0.0.1-SNAPSHOT.jar
-
 ```
 
 
