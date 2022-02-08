@@ -22,7 +22,7 @@ import org.springframework.context.annotation.Profile;
 public class DubboConsumerBeans {
     @DubboReference(version = "1.0.0", timeout = 2000, registry = "jessinRegistry")
     @Bean
-    public static ReferenceBean<UserService> userServiceReference() {
+    public ReferenceBean<UserService> userServiceReference() {
         return new ReferenceBean<>();
     }
 

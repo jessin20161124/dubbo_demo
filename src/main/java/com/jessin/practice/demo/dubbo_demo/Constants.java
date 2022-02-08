@@ -7,4 +7,7 @@ package com.jessin.practice.demo.dubbo_demo;
 public interface Constants {
     String PROVIDER = "provider";
     String CONSUMER = "consumer";
+
+    // tri/dubbo
+    String PROTOCOL = "tri";
 }

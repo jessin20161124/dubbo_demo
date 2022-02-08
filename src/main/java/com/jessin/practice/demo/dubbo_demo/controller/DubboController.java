@@ -27,7 +27,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- *
+ * todo serviceName mapping 如何做的？
+ *      dubbo 3.0 博客情况如何，没有人写过，是否更加容易收到关注？
  * @Author: jessin
  * @Date: 19-8-3 下午4:25
  */
