@@ -10,7 +10,7 @@
 ```
 &nbsp;&nbsp;&nbsp;&nbsp;公网云服务器：
 ```
-  java -DDUBBO_IP_TO_BIND=101.43.195.208 -Dspring.profiles.active=provider -Dserver.port=8081 -jar target/dubbo_demo-0.0.1-SNAPSHOT.jar
+  java -DDUBBO_IP_TO_REGISTRY=101.43.195.208 -Dspring.profiles.active=provider -Dserver.port=8081 -jar target/dubbo_demo-0.0.1-SNAPSHOT.jar
 ```
 
 
