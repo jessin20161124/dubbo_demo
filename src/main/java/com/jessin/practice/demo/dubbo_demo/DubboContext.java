@@ -60,7 +60,7 @@ public class DubboContext {
         // 3.0不需要设置
         paramMap.put(REGISTRY_TYPE_KEY, SERVICE_REGISTRY_TYPE);
         // consumer消费协议
-        paramMap.put("protocol", Constants.PROTOCOL);
+        paramMap.put("protocol", Constants.DUBBO_PROTOCOL);
         applicationConfig.setParameters(paramMap);
         return applicationConfig;
     }
@@ -73,7 +73,7 @@ public class DubboContext {
     public ProtocolConfig protocolConfig() {
         // 如果要隔离某个dubbo service，需要开启一个单独的端口，才会起一个单独的线程池
         ProtocolConfig protocolConfig = new ProtocolConfig();
-        protocolConfig.setName(Constants.PROTOCOL);
+        protocolConfig.setName(Constants.TRI_PROTOCOL);
         protocolConfig.setCorethreads(200);
         protocolConfig.setThreads(300);
         protocolConfig.setPort(20880);
@@ -89,7 +89,7 @@ public class DubboContext {
         // 如果要隔离某个dubbo service，需要开启一个单独的端口，才会起一个单独的线程池，
         // 每个dubbo provider必须指定用哪个protocol，否则会注册两个provider invoker，分别为port1和port2
         ProtocolConfig protocolConfig = new ProtocolConfig();
-        protocolConfig.setName("dubbo");
+        protocolConfig.setName(Constants.DUBBO_PROTOCOL);
         protocolConfig.setCorethreads(30);
         protocolConfig.setThreads(100);
         protocolConfig.setPort(20882);

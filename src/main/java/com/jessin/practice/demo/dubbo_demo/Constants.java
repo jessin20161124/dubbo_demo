@@ -8,6 +8,7 @@ public interface Constants {
     String PROVIDER = "provider";
     String CONSUMER = "consumer";
 
-    // tri/dubbo
-    String PROTOCOL = "tri";
+    String TRI_PROTOCOL = "tri";
+
+    String DUBBO_PROTOCOL = "dubbo";
 }
