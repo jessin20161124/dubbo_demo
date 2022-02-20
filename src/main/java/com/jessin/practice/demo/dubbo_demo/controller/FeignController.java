@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class FeignController {
-    @Resource
+    // todo 这里添加注解后启动报错，查看原因
+   // @Resource
     private MyFeignClient myFeignClient;
 
     @Resource

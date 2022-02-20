@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-import javax.annotation.Resource;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,8 +37,7 @@ public class DubboController {
 
     private Logger log = LoggerFactory.getLogger(getClass());
 
-//    @DubboReference(version = "1.0.0", timeout = 3000, registry = "jessinRegistry", application = "applicationConfig")
-    @Resource
+    @DubboReference(version = "1.0.0", timeout = 2000, registry = "jessinRegistry", application = "applicationConfig")
     private UserService userService;
 
     @DubboReference(version = "1.0.0", group = "service_group", timeout = 3000, registry = "jessinRegistry", application = "applicationConfig")

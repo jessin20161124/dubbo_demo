@@ -61,6 +61,7 @@ public class DubboContext {
         paramMap.put(REGISTRY_TYPE_KEY, SERVICE_REGISTRY_TYPE);
         // consumer消费协议
         paramMap.put("protocol", Constants.DUBBO_PROTOCOL);
+        paramMap.put("serialization", "protostuff");
         applicationConfig.setParameters(paramMap);
         return applicationConfig;
     }
@@ -73,12 +74,12 @@ public class DubboContext {
     public ProtocolConfig protocolConfig() {
         // 如果要隔离某个dubbo service，需要开启一个单独的端口，才会起一个单独的线程池
         ProtocolConfig protocolConfig = new ProtocolConfig();
-        protocolConfig.setName(Constants.TRI_PROTOCOL);
+        protocolConfig.setName(Constants.DUBBO_PROTOCOL);
         protocolConfig.setCorethreads(200);
         protocolConfig.setThreads(300);
         protocolConfig.setPort(20880);
         protocolConfig.setQueues(1000);
-        protocolConfig.setSerialization("hessian2");
+        protocolConfig.setSerialization("protostuff");
         protocolConfig.setThreadpool("cached");
         return protocolConfig;
     }
