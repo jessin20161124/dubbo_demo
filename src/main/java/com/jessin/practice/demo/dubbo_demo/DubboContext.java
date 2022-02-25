@@ -9,6 +9,7 @@ import java.util.Map;
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ProtocolConfig;
 import org.apache.dubbo.config.RegistryConfig;
+import org.apache.dubbo.config.spring.ConfigCenterBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
@@ -41,6 +42,14 @@ public class DubboContext {
         registryConfig.setGroup(group);
         registryConfig.setProtocol("zookeeper");
         return registryConfig;
+    }
+
+    @Bean
+    public ConfigCenterBean configCenterBean() {
+        ConfigCenterBean configCenterBean = new ConfigCenterBean();
+        configCenterBean.setProtocol("nacos");
+        configCenterBean.setAddress("101.43.195.208:8848");
+        return configCenterBean;
     }
 
     /**
@@ -79,6 +88,7 @@ public class DubboContext {
         protocolConfig.setPort(20880);
         protocolConfig.setQueues(1000);
         protocolConfig.setSerialization("hessian2");
+
         protocolConfig.setThreadpool("cached");
         return protocolConfig;
     }
