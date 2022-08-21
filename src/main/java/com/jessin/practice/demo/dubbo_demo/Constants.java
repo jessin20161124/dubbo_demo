@@ -11,4 +11,6 @@ public interface Constants {
     String TRI_PROTOCOL = "tri";
 
     String DUBBO_PROTOCOL = "dubbo";
+
+    String GRPC_PROTOCOL = "grpc";
 }

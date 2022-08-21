@@ -8,11 +8,12 @@ import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.context.annotation.Profile;
 
 /**
+ * 注意，这里不是grpc接口，所以必须指定protoclConfig，不能用grpc
  * @Author: jessin
  * @Date: 2022/1/10 10:30 上午
  */
 @Profile(Constants.PROVIDER)
-@DubboService(registry = "jessinRegistry", version = "1.0.2", timeout = 1000, application = "applicationConfig")
+@DubboService(registry = "jessinRegistry", version = "1.0.2", protocol = {"protocolConfig","protocolConfig1"}, timeout = 1000, application = "applicationConfig")
 public class DomainServiceV2 implements DomainService {
     @Override
     public DomainInfo queryAssociatedDomain(UserParam userParam) {

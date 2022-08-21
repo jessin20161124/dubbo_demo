@@ -28,7 +28,7 @@ import org.springframework.context.annotation.Profile;
  * @Date: 19-11-27 下午11:33
  */
 @Profile(Constants.PROVIDER)
-@DubboService(registry = "jessinRegistry", version = "1.0.0", timeout = 1000, application = "applicationConfig")
+@DubboService(registry = "jessinRegistry", version = "1.0.0", timeout = 1000, protocol = {"protocolConfig","protocolConfig1"}, application = "applicationConfig")
 public class UserServiceImpl implements UserService {
     private Logger log = LoggerFactory.getLogger(getClass());
 

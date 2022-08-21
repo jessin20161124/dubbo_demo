@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Profile;
  * @Date: 2022/1/10 10:30 上午
  */
 @Profile(Constants.PROVIDER)
-@DubboService(registry = "jessinRegistry", group = "service_group", version = "1.0.0", timeout = 1000, application = "applicationConfig")
+@DubboService(registry = "jessinRegistry", group = "service_group", version = "1.0.0", timeout = 1000, protocol = {"protocolConfig","protocolConfig1"}, application = "applicationConfig")
 public class DomainServiceImpl implements DomainService {
 
     @Override

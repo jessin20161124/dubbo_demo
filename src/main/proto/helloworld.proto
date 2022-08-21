@@ -1,0 +1,26 @@
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.jessin.practice.demo.dubbo_demo.hello";
+option java_outer_classname = "HelloWorldProto";
+option objc_class_prefix = "ABC";
+
+package helloworld;
+
+
+service Greeter {
+  // 简单的rpc
+  rpc SayHello (HelloRequest) returns (HelloReply) {} ;
+}
+
+
+
+message HelloRequest {
+  string name = 1;
+}
+
+
+message HelloReply {
+  string message = 1;
+}

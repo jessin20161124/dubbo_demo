@@ -3,6 +3,9 @@ package com.jessin.practice.demo.dubbo_demo.controller;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.jessin.practice.demo.dubbo_demo.Constants;
+import com.jessin.practice.demo.dubbo_demo.hello.DubboGreeterGrpc;
+import com.jessin.practice.demo.dubbo_demo.hello.HelloReply;
+import com.jessin.practice.demo.dubbo_demo.hello.HelloRequest;
 import com.jessin.practice.dubbo.model.AppInfo;
 import com.jessin.practice.dubbo.model.BizType;
 import com.jessin.practice.dubbo.model.DomainInfo;
@@ -37,11 +40,14 @@ public class DubboController {
 
     private Logger log = LoggerFactory.getLogger(getClass());
 
-    @DubboReference(version = "1.0.0", timeout = 2000, registry = "jessinRegistry", application = "applicationConfig")
+    @DubboReference(version = "1.0.0", timeout = 2000, registry = "jessinRegistry", protocol = Constants.DUBBO_PROTOCOL, application = "applicationConfig")
     private UserService userService;
 
     @DubboReference(version = "1.0.0", group = "service_group", timeout = 3000, registry = "jessinRegistry", application = "applicationConfig")
     private DomainService domainService;
+
+    @DubboReference(version = "1.0.0", group = "service_group", timeout = 3000, registry = "jessinRegistry", protocol = Constants.GRPC_PROTOCOL, application = "applicationConfig")
+    private DubboGreeterGrpc.IGreeter greeter;
 
     /**
      * http://localhost:9999/practice/user?type=7
@@ -269,4 +275,15 @@ public class DubboController {
     public DomainInfo domain(UserParam userParam) {
         return domainService.queryAssociatedDomain(userParam);
     }
+
+    /**
+     * http://localhost:9999/practice/helloGrpc?id=321&name=laosiji
+     */
+    @RequestMapping("/helloGrpc")
+    public String helloGrpc(String name) {
+        HelloRequest helloRequest = HelloRequest.newBuilder().setName(name).build();
+        HelloReply helloReply = greeter.sayHello(helloRequest);
+        return helloReply.getMessage();
+    }
+
 }

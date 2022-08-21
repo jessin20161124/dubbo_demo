@@ -60,8 +60,8 @@ public class DubboContext {
         // 3.0不需要设置
         paramMap.put(REGISTRY_TYPE_KEY, SERVICE_REGISTRY_TYPE);
         // consumer消费协议
-        paramMap.put("protocol", Constants.DUBBO_PROTOCOL);
-        paramMap.put("serialization", "protostuff");
+       // paramMap.put("protocol", Constants.DUBBO_PROTOCOL);
+       // paramMap.put("serialization", "protostuff");
         applicationConfig.setParameters(paramMap);
         return applicationConfig;
     }
@@ -98,4 +98,14 @@ public class DubboContext {
         protocolConfig.setThreadpool("cached");
         return protocolConfig;
     }
+
+    // 配置ProtocolConfig
+    @Bean
+    public ProtocolConfig protocolConfigGrpc() {
+        ProtocolConfig protocolConfig = new ProtocolConfig();
+        protocolConfig.setName(Constants.GRPC_PROTOCOL);
+        protocolConfig.setPort(20883);
+        return protocolConfig;
+    }
+
 }
